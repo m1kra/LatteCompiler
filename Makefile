@@ -9,17 +9,19 @@ grammar=Latte.g4
 runtimec=$(src)/runtime.c
 runtimeo=$(lib)/runtime.o
 
-all: makeParser makeVenv compileRuntime
+.PHONY: test clean
 
-makeParser:
-	mkdir -p $(antlr4gen)
-	java -jar $(antlr4jar) -Dlanguage=Python3 -visitor -no-listener -o $(antlr4gen) $(grammar)
+all: venv $(antlr4gen) $(runtimeo)
 
-makeVenv:
+venv:
 	virtualenv -p python3 $(venv)
 	$(venv)/bin/pip install antlr4-python3-runtime
 
-compileRuntime:
+$(antlr4gen): $(grammar)
+	mkdir -p $(antlr4gen)
+	java -jar $(antlr4jar) -Dlanguage=Python3 -visitor -no-listener -o $(antlr4gen) $(grammar)
+
+$(runtimeo): $(runtimec)
 	gcc -m32 -c $(runtimec) -o $(runtimeo)
 
 test:
