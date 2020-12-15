@@ -1,0 +1,20 @@
+
+void main(){
+    boolean a = true, b = false;
+    printBool(a && b); printBool(a || b);
+    if ((((a || b) && (1 != 0))) && !b){
+        printString("Ok.");
+    }
+    printString("&&");
+    printBool(-1 > 0); printBool(123 < 321);
+    printBool(-3 == -3); printBool(-3 != -3);
+    printBool(1 <= -1); printBool(-1 >= 1);
+}
+
+void printBool(boolean b){
+    if (b)
+        printInt(1);
+    else
+        printInt(0);
+}
+

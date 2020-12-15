@@ -1,0 +1,16 @@
+void main(){
+    if (2 != 2){
+        printString("Should not print.");
+    } else {
+        int x = 3, y = 4;
+        if(x + 1 == y){
+            if (y > x){
+                printString("Ok.");
+            }
+            while(true){
+                printInt((y * y - x - x * y) * (y - x) * (x + y));
+                return;
+            }
+        }
+    }  
+}

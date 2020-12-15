@@ -1,0 +1,83 @@
+
+class Animal {
+    string name;
+
+    void tellName(){
+        printString("My name is " + name);
+    }
+
+    void setName(string newName){
+        name = newName;
+    }
+
+    void makeNoise(){}
+
+    int getDailyFoodConsumption(){
+        return 0;
+    }
+}
+
+class Dog extends Animal {
+    void makeNoise(){
+        printString("Bark! Bark!");
+    }
+
+    int getDailyFoodConsumption(){
+        return 5;
+    }
+}
+
+class Cat extends Animal {
+    void makeNoise(){
+        printString("Meow! Meow!");
+    }
+
+    int getDailyFoodConsumption(){
+        return 3;
+    }
+}
+
+
+class AnimalList{
+    Animal animal;
+    AnimalList nextAnimal;
+
+    void makeNoise(){
+        animal.makeNoise();
+        if (nextAnimal != (AnimalList) null)
+            nextAnimal.makeNoise();
+    }
+
+    void tellName(){
+        animal.tellName();
+        if (nextAnimal != (AnimalList) null)
+            nextAnimal.tellName();
+    }
+
+    int cumulativeFoodConsumption(){
+        int currConsumption = animal.getDailyFoodConsumption();
+        if (nextAnimal == (AnimalList)null)
+            return currConsumption;
+        return currConsumption + nextAnimal.cumulativeFoodConsumption();
+    }
+}
+
+int main(){
+    Dog rex = new Dog;
+    Cat leo = new Cat;
+    Dog max = new Dog;
+    rex.setName("Rex");
+    leo.setName("Leo");
+    max.setName("Max");
+    rex.tellName(); leo.tellName(); max.tellName();
+    AnimalList fst = new AnimalList;
+    AnimalList snd = new AnimalList;
+    AnimalList thrd = new AnimalList;
+    fst.animal = max; snd.animal = leo; thrd.animal = rex;
+    fst.nextAnimal = snd; snd.nextAnimal = thrd;
+    fst.tellName();
+    fst.makeNoise();
+    printInt(fst.cumulativeFoodConsumption());
+    return 0;
+}
+

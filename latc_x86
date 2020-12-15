@@ -1,0 +1,5 @@
+#!/bin/bash
+
+HERE=$(dirname $0)
+
+"$HERE/venv/bin/python" "$HERE/src/latc.py" "${@:1}"

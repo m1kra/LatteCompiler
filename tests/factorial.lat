@@ -1,0 +1,35 @@
+int iter_factorial(int n){
+    int i = 1, res = 1;
+    while (i < n + 1){
+        res = res * i;
+        i++;
+    }
+    return res;
+}
+
+int rec_factorial(int n){
+    if (n < 2)
+        return 1;
+    return n * rec_factorial(n - 1);
+}
+
+int rec2a_factorial(int n){
+    if (n < 2)
+        return 1;
+    return n * rec2b_factorial(n - 1);
+}
+
+int rec2b_factorial(int n){
+    if (n < 2)
+        return 1;
+    return n * rec2a_factorial(n - 1);
+}
+
+
+void main(){
+    printInt(iter_factorial(5));
+    printInt(rec_factorial(5));
+    printInt(rec2a_factorial(5));
+    printInt(rec_factorial(12));
+    printInt(iter_factorial(rec_factorial(3)));
+}

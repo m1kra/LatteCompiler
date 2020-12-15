@@ -1,0 +1,15 @@
+
+int main(){
+    int x = 10, y;
+    if (y > x){
+        printString("Shouldn't print");
+    } else {
+        y = 12;
+        int x = 30;
+        printInt(x);
+        printInt(y);
+    }
+    printInt(x);
+    printInt(y);
+    return 0;
+}

@@ -1,0 +1,6 @@
+__pycache__/
+*.o
+*.pyc
+venv/
+antlr4gen/
+.vscode/

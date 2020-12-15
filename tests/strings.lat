@@ -1,0 +1,22 @@
+
+
+int main(){
+    // This is a comment.
+    printString("Hello there!");
+    /*
+    printString("Don't print this!");
+    */
+    printString("Test " + "string.");
+    printString(repeat("abc ", 5));
+    return 0;
+}
+
+string repeat(string s, int times){
+    string r = "";
+    int i = 0;
+    while( i < times){
+        r = r + s;
+        i = i + 1;
+    }
+    return r;
+}

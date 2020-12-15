@@ -1,0 +1,21 @@
+
+int main(){
+    printString("Give me a string.");
+    string s = readString();
+    printString("The string I got is: " + s);
+    printString("Give me two natural numbers.");
+    int n = readInt(), m = readInt();
+    printString("Their NWD is:");
+    printInt(nwd(n, m));
+    return 0;
+}
+
+int nwd(int a, int b){
+    if(a > b){
+        return nwd(a - b, b);
+    } else {
+        if(a < b)
+            return nwd(a, b - a);
+        return a;
+    }
+}
